@@ -2821,6 +2821,17 @@ importers:
     specifiers:
       tslint-config-standard: 9.0.0
       tslint-eslint-rules: 5.4.0
+  utils/updater:
+    dependencies:
+      '@pnpm/find-workspace-packages': 'link:../../packages/find-workspace-packages'
+      '@pnpm/types': 'link:../../packages/types'
+      is-subdir: 1.1.1
+      path-exists: 4.0.0
+    specifiers:
+      '@pnpm/find-workspace-packages': 'workspace:2.1.10'
+      '@pnpm/types': 'workspace:5.0.0'
+      is-subdir: 1.1.1
+      path-exists: 4.0.0
 lockfileVersion: 5.1
 packages:
   /@babel/code-frame/7.8.3:
