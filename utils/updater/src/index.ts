@@ -29,10 +29,11 @@ async function updateManifest (dir: string, manifest: ProjectManifest) {
     case '@pnpm/plugin-commands-import':
     case '@pnpm/plugin-commands-installation':
     case '@pnpm/plugin-commands-listing':
+    case '@pnpm/plugin-commands-outdated':
     case '@pnpm/plugin-commands-publishing':
     case '@pnpm/plugin-commands-rebuild':
+    case '@pnpm/plugin-commands-script-runners':
     case '@pnpm/plugin-commands-store':
-    case '@pnpm/plugin-commands-outdated':
     case 'pnpm':
     case 'supi':
       registryMockPort++
@@ -43,7 +44,9 @@ async function updateManifest (dir: string, manifest: ProjectManifest) {
 
         'test:e2e': 'registry-mock prepare && run-p -r registry-mock test:tap',
 
-        test: 'pnpm run tsc -- --sourceMap && pnpm run _test',
+        test: manifest.name === 'pnpm'
+          ? 'pnpm run tsc && pnpm run _test'
+          : 'pnpm run tsc -- --sourceMap && pnpm run _test',
 
         _test: `cross-env PNPM_REGISTRY_MOCK_PORT=${registryMockPort} pnpm run test:e2e`,
       }
