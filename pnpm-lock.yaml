@@ -1925,7 +1925,7 @@ importers:
       load-json-file: 6.2.0
       path-exists: 4.0.0
       sinon: 9.0.0
-      tempy: 0.5.0
+      tempy: 0.4.0
     specifiers:
       '@pnpm/assert-store': 'workspace:1.0.0'
       '@pnpm/check-package': 3.0.1
@@ -1957,7 +1957,7 @@ importers:
       ramda: 0.27.0
       render-help: 1.0.0
       sinon: 9.0.0
-      tempy: 0.5.0
+      tempy: 0.4.0
   packages/pnpm:
     dependencies:
       '@pnpm/cli-utils': 'link:../cli-utils'
@@ -11167,17 +11167,6 @@ packages:
       node: '>=10'
     resolution:
       integrity: sha512-mKnScm8aXv+cG6l1Nzp6mERGgC4UblbPnSDeQp83JgZ7xqDcnl+7u3+6zXnf1UE7YluDUTEIna1iKYwCSaOk9g==
-  /tempy/0.5.0:
-    dependencies:
-      is-stream: 2.0.0
-      temp-dir: 2.0.0
-      type-fest: 0.12.0
-      unique-string: 2.0.0
-    dev: true
-    engines:
-      node: '>=10'
-    resolution:
-      integrity: sha512-VEY96x7gbIRfsxqsafy2l5yVxxp3PhwAGoWMyC2D2Zt5DmEv+2tGiPOrquNRpf21hhGnKLVEsuqleqiZmKG/qw==
   /term-size/2.2.0:
     dev: false
     engines:
@@ -11513,12 +11502,6 @@ packages:
       node: '>=8'
     resolution:
       integrity: sha512-EUV9jo4sffrwlg8s0zDhP0T2WD3pru5Xi0+HTE3zTUmBaZNhfkite9PdSJwdXLwPVW0jnAHT56pZHIOYckPEiw==
-  /type-fest/0.12.0:
-    dev: true
-    engines:
-      node: '>=10'
-    resolution:
-      integrity: sha512-53RyidyjvkGpnWPMF9bQgFtWp+Sl8O2Rp13VavmJgfAP9WWG6q6TkrKU8iyJdnwnfgHI6k2hTlgqH4aSdjoTbg==
   /type-fest/0.3.1:
     dev: true
     engines:

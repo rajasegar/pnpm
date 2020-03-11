@@ -45,12 +45,13 @@ async function updateManifest (dir: string, manifest: ProjectManifest) {
         'test:tap': `cd ../.. && c8 --reporter lcov --reports-dir ${path.join(relative, 'coverage')} ts-node ${path.join(relative, 'test')} --type-check`,
 
         'test:e2e': 'registry-mock prepare && run-p -r registry-mock test:tap',
-
-        test: manifest.name === 'pnpm'
-          ? 'pnpm run tsc && pnpm run _test'
-          : 'pnpm run tsc -- --sourceMap && pnpm run _test',
-
-        _test: `cross-env PNPM_REGISTRY_MOCK_PORT=${port} pnpm run test:e2e`,
+      }
+      if (manifest.name === 'pnpm') {
+        scripts.test = 'pnpm run _test'
+        scripts._test = `pnpm run tsc && cross-env PNPM_REGISTRY_MOCK_PORT=${port} pnpm run test:e2e`
+      } else {
+        scripts.test = 'pnpm run tsc -- --sourceMap && pnpm run _test'
+        scripts._test = `cross-env PNPM_REGISTRY_MOCK_PORT=${port} pnpm run test:e2e`
       }
       break
     default:
