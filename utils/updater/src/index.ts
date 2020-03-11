@@ -36,7 +36,9 @@ async function updateManifest (dir: string, manifest: ProjectManifest) {
     case '@pnpm/plugin-commands-store':
     case 'pnpm':
     case 'supi':
-      registryMockPort++
+      // supi tests currently works only with port 4873 due to the usage of
+      // the next package: pkg-with-tarball-dep-from-registry
+      const port = manifest.name === 'supi' ? 4873 : ++registryMockPort
       scripts = {
         ...manifest.scripts,
         'registry-mock': 'registry-mock',
@@ -48,7 +50,7 @@ async function updateManifest (dir: string, manifest: ProjectManifest) {
           ? 'pnpm run tsc && pnpm run _test'
           : 'pnpm run tsc -- --sourceMap && pnpm run _test',
 
-        _test: `cross-env PNPM_REGISTRY_MOCK_PORT=${registryMockPort} pnpm run test:e2e`,
+        _test: `cross-env PNPM_REGISTRY_MOCK_PORT=${port} pnpm run test:e2e`,
       }
       break
     default:
